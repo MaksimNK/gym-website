@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  gym_website:
+    image: gym_website
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/gym_website
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on: 
+      - db
+
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: gym_website
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+    - "5433:5432"
+    volumes:
+      - ./db-init-scripts:/docker-entrypoint-initdb.d/
