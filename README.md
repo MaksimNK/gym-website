@@ -34,8 +34,9 @@ spring.datasource.password=postgres
 
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.properties.hibernate.show_sql=true
+```
 
-Getting Started
+## Configuration
 Step 1: Clone the Repository
 
 Clone this repository to your local machine:
